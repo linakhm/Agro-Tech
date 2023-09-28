@@ -38,7 +38,7 @@ pipeline {
                     
                         // Use Jenkins credentials to securely access the SonarQube token
                   
-                    withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonar', variable: 'SONAR_TOKEN')]) {
                         // Run SonarQube analysis with authentication
                         
                         sh "mvn sonar:sonar -Dsonar.login=$SONAR_TOKEN"
