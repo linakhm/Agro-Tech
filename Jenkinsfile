@@ -14,10 +14,10 @@ pipeline {
             steps {
             
                 sh 'mvn test'
-                junit '**/target/surefire-repo'
+                junit '**/target/surefire-reports/*.xml'
                 
                 
-                rts/*.xml'
+                
   
         }
          
