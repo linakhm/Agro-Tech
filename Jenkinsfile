@@ -80,6 +80,7 @@ stage('Docker Build & Push frontend and backend images') {
             }
         }
     
+ }   
 
     post {
         success {
@@ -93,6 +94,6 @@ stage('Docker Build & Push frontend and backend images') {
     }
     }
     
-   }
+   
   
 
