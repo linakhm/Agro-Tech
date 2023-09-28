@@ -45,6 +45,7 @@ pipeline {
                     }
                 }
             }
+}
 
 stage('Docker Build & Push frontend and backend images') {
 
@@ -93,5 +94,5 @@ stage('Docker Build & Push frontend and backend images') {
     }
     
    }
-}   
+  
 
