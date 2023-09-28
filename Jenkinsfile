@@ -62,7 +62,8 @@ stage('Docker Build & Push frontend and backend images') {
                
                  }
         }
-
+}
+}
         stage('Deploy application with Docker Compose') {
             steps {
 
@@ -77,7 +78,7 @@ stage('Docker Build & Push frontend and backend images') {
                 }
             }
         }
-    }
+    
 
     post {
         success {
@@ -89,5 +90,8 @@ stage('Docker Build & Push frontend and backend images') {
             echo 'Pipeline failed!'
         }
     }
-}
+    }
+    
+   }
+}   
 
