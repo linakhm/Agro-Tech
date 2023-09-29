@@ -55,6 +55,9 @@ stage('Docker Build & Push frontend and backend images') {
             
                 withDockerRegistry(toolName: 'Docker', url: 'linakhm87/agro-tech-devops-2023') {
                 sh 'whoami'
+                sh 'docker --version'
+                sh 'docker images'
+
                 sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile .' 
                 sh 'docker push linakhm87/agrotech-backend-image:latest'
                 
