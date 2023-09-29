@@ -104,7 +104,7 @@ stage('Docker Build & Push frontend and backend images') {
             echo 'Pipeline failed!'
         }
     }
-    }
+    
     
    
   
