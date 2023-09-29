@@ -53,7 +53,16 @@ stage('Docker Build & Push frontend and backend images') {
             
             script {
             
-                withDockerRegistry(toolName: 'Docker', url: 'linakhm87/agro-tech-devops-2023') {
+                //withDockerRegistry(toolName: 'Docker', url: 'linakhm87/agro-tech-devops-2023')
+                // Use Docker credentials to log in to the registry
+                
+                withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')])
+                 {
+                
+                        sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD https://hub.docker.com/repository/docker/linakhm87/agro-tech-devops-2023/general"
+                    }
+                
+                 {
                 sh 'whoami'
                 sh 'docker --version'
 
