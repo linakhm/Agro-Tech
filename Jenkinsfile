@@ -53,16 +53,12 @@ stage('Docker Build & Push frontend and backend images') {
             
             script {
             
-                //withDockerRegistry(toolName: 'Docker', url: 'linakhm87/agro-tech-devops-2023')
-                // Use Docker credentials to log in to the registry
-                
-                withCredentials([usernamePassword(credentialsId: 'docker-login', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')])
-                 {
-                
-                        sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD https://hub.docker.com/repository/docker/linakhm87/agro-tech-devops-2023/general"
-                    }
-                
-                 {
+   // Use Jenkins credentials to securely access the Docker PAT
+                    withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
+                    
+                        sh "docker login -u _token -p $DOCKER_PAT https://index.docker.io/v1/"
+                        
+                        
                 sh 'whoami'
                 sh 'docker --version'
 
