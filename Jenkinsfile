@@ -61,15 +61,9 @@ stage('Docker Build & Push frontend and backend images') {
 
               // Use Docker credentials to log in to the registry
               
-                withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
-               
-                 sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
-            }
-
+                withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) 
           
-          
-          
-            
+                sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"   
                 sh 'whoami'
                 sh 'docker --version'
 
