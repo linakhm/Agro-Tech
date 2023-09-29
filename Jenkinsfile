@@ -56,7 +56,7 @@ stage('Docker Build & Push frontend and backend images') {
    // Use Jenkins credentials to securely access the Docker PAT
                     withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
                     
-                        sh "docker login -u _token --password-stdin https://index.docker.io/v1/"
+                        sh "docker login -u _token --password https://index.docker.io/v1/"
                         
                         
                 sh 'whoami'
