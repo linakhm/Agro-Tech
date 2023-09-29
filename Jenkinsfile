@@ -54,11 +54,22 @@ stage('Docker Build & Push frontend and backend images') {
             script {
             
    // Use Jenkins credentials to securely access the Docker PAT
-                    withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
+          
+                    // Define the Docker registry URL 
                     
-                        sh "docker login -u _token --password-stdin https://index.docker.io/v1/"
-                        
-                        
+                 def dockerRegistryUrl = 'https://index.docker.io/v1/'
+
+              // Use Docker credentials to log in to the registry
+              
+                withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
+               
+                 sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
+            }
+
+          
+          
+          
+            
                 sh 'whoami'
                 sh 'docker --version'
 
