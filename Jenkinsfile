@@ -47,31 +47,25 @@ pipeline {
             }
 }
 
-stage('Docker Build & Push frontend and backend images') {
+            stage('Docker Build & Push frontend and backend images') {
 
             steps {
             
             script {
             
-   // Use Jenkins credentials to securely access the Docker PAT
-          
-                    // Define the Docker registry URL 
-                    
-                 def dockerRegistryUrl = 'https://index.docker.io/v1/'
+     // Use Jenkins credentials to securely access the Docker PAT
+                    withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
+                        // Define the Docker registry URL (e.g., Docker Hub)
+                        def dockerRegistryUrl = 'https://index.docker.io/v1/'
 
-              // Use Docker credentials to log in to the registry
-              
-                withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) 
-          {
-                sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"   
-                sh 'whoami'
-                sh 'docker --version'
+                        // Log in to the Docker registry using the Docker PAT
+                        sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
 
-                sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile .' 
-                sh 'docker push linakhm87/agrotech-backend-image:latest'
-                
-                sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
-                sh 'docker push linakhm87/agrotech-frontend-image:latest'
+                        // Build and push your Docker images as before
+                        sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile .'
+                        sh 'docker push linakhm87/agrotech-backend-image:latest'
+                        sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
+                        sh 'docker push linakhm87/agrotech-frontend-image:latest'
                
                  }
         }
