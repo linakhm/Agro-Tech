@@ -54,24 +54,26 @@ pipeline {
             script {
             
      // Use Jenkins credentials to securely access the Docker PAT
-                    withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
+                   // withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
                         // Define the Docker registry URL (e.g., Docker Hub)
-                        def dockerRegistryUrl = 'https://index.docker.io/v1/'
-
-  // Debugging output
-                echo "DOCKER_PAT: $DOCKER_PAT"
-                echo "Docker Registry URL: $dockerRegistryUrl"
-
-                        // Log in to the Docker registry using the Docker PAT
-                        sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
-
-                        // Build and push your Docker images as before
+                  //      def dockerRegistryUrl = 'https://index.docker.io/v1/'
+                  
+// This step should not normally be used in your script. Consult the inline help for details.
+withDockerRegistry(url: 'https://hub.docker.com/r/linakhm87/agro-tech-devops-2023') {
+            // Build and push your Docker images as before
                         sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile .'
                         sh 'docker push linakhm87/agrotech-backend-image:latest'
                         sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
                         sh 'docker push linakhm87/agrotech-frontend-image:latest'
+}
+
+
+                        // Log in to the Docker registry using the Docker PAT
+                       //sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
+
+                
                
-                 }
+                // }
         }
 }
 }
