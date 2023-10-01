@@ -47,35 +47,36 @@ pipeline {
             }
 }
 
-            stage('Docker Build & Push frontend and backend images') {
+            stage('Docker Build frontend and backend images') {
 
             steps {
             
             script {
             
-     // Use Jenkins credentials to securely access the Docker PAT
-                   // withCredentials([string(credentialsId: 'docker-pat', variable: 'DOCKER_PAT')]) {
-                        // Define the Docker registry URL (e.g., Docker Hub)
-                  //      def dockerRegistryUrl = 'https://index.docker.io/v1/'
-                  
-// This step should not normally be used in your script. Consult the inline help for details.
-withDockerRegistry(url: 'https://hub.docker.com/r/linakhm87/agro-tech-devops-2023') {
-            // Build and push your Docker images as before
-                        sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile .'
-                        sh 'docker push linakhm87/agrotech-backend-image:latest'
-                        sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
-                        sh 'docker push linakhm87/agrotech-frontend-image:latest'
+  sh 'docker build -t agrotech-backend-image:latest -f /Dockerfile/Dockerfile .'
+  //sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
+                        
 }
 
-
-                        // Log in to the Docker registry using the Docker PAT
-                       //sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
-
-                
-               
-                // }
+     
         }
 }
+
+            stage('Docker push frontend and backend images') {
+           
+            steps{
+            script { 
+            
+            withCredentials([string(credentialsId: 'docker_PAT', variable: 'docker_variable')]) {
+    
+                     sh 'docker login -u linakhm87 -p ${docker_variable}'
+}
+            
+            sh 'docker push linakhm87/agrotech-backend-image:latest' 
+           // sh 'docker push linakhm87/agrotech-frontend-image:latest'
+                   }
+                    
+            }
 }
 
         stage('Deploy application with Docker Compose') {
