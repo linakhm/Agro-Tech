@@ -58,18 +58,6 @@ pipeline {
                         // Define the Docker registry URL (e.g., Docker Hub)
                         def dockerRegistryUrl = 'https://index.docker.io/v1/'
 
-                 // Debugging output
-                echo "DOCKER_PAT: $DOCKER_PAT"
-                echo "Docker Registry URL: $dockerRegistryUrl"
-               // Capture the output and exit status of the docker login command                
-                def loginResult = sh(script: "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl", returnStatus: true)
-
-                // Check the exit status of the docker login command
-                if (loginResult == 0) {
-                    echo "Docker login successful"
-                } else {
-                    error "Docker login failed with exit code: $loginResult"
-                }
                         // Log in to the Docker registry using the Docker PAT
                         sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
 
