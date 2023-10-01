@@ -58,6 +58,10 @@ pipeline {
                         // Define the Docker registry URL (e.g., Docker Hub)
                         def dockerRegistryUrl = 'https://index.docker.io/v1/'
 
+  // Debugging output
+                echo "DOCKER_PAT: $DOCKER_PAT"
+                echo "Docker Registry URL: $dockerRegistryUrl"
+
                         // Log in to the Docker registry using the Docker PAT
                         sh "docker login -u _token -p $DOCKER_PAT $dockerRegistryUrl"
 
