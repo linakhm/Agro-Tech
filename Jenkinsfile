@@ -52,11 +52,11 @@ pipeline {
             steps {           
             script { 
            
-  def currentDir = pwd()
+  //def currentDir = pwd()
 
-            echo "Current directory: ${currentDir}"
+          //  echo "Current directory: ${currentDir}"
             
-    sh 'docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile/Dockerfile .'        
+    sh 'docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile .'        
   //sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile/Dockerfile .'
   //sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
                         
