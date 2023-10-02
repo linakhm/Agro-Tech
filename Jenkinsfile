@@ -53,13 +53,18 @@ pipeline {
             
             script { 
            
-           dir('/root/Agro-Tech/Agro-Tech/Dockerfile') {
+  def currentDir = pwd()
 
+            echo "Current directory: ${currentDir}"
+
+            // Change to the directory where the Dockerfile is located
+            sh "cd /root/Agro-Tech/Agro-Tech/Dockerfile"
+            
     sh 'docker build -t agrotech-backend-image:latest -f Dockerfile .'        
   //sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile/Dockerfile .'
   //sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
                         
-}
+
 }
     
         }
