@@ -49,16 +49,12 @@ pipeline {
 
             stage('Docker Build frontend and backend images') {
 
-            steps {
-            
+            steps {           
             script { 
            
   def currentDir = pwd()
 
             echo "Current directory: ${currentDir}"
-
-            // Change to the directory where the Dockerfile is located
-            sh "cd /root/Agro-Tech/Agro-Tech/Dockerfile"
             
     sh 'docker build -t agrotech-backend-image:latest -f ${currentDir}/Dockerfile .'        
   //sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile/Dockerfile .'
