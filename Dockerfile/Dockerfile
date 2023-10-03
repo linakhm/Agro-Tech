@@ -5,7 +5,8 @@ FROM openjdk:8-jdk
 WORKDIR /app
 
 # Copy your Java application files into the container 
-COPY AgroTechSolutions-0.0.1-SNAPSHOT.jar app.jar
+#COPY AgroTechSolutions-0.0.1-SNAPSHOT.jar app.jar
+COPY /root/Agro-Tech/Agro-Tech/Dockerfile/AgroTechSolutions-0.0.1-SNAPSHOT.jar app.jar
 #COPY /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile/AgroTechSolutions-0.0.1-SNAPSHOT.jar app.jar
 # Expose any ports your application listens on 
 EXPOSE 8089
