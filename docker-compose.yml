@@ -1,0 +1,25 @@
+version: '3'
+services:
+  backend:
+    image: agrotech-backend-image:latest
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_PORT=27017
+    ports:
+    - "8089:8089"  # Map container port 8089 to host port 8089
+    depends_on:
+      - mongodb
+  frontend:
+    image: agrotech-frontend-image:latest
+    ports:
+      - "8003:4200"  # Expose the frontend on port 80 of the host.
+    tty: true
+    depends_on:
+      - backend
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+      
+#spring.data.mongodb.host=host.docker.internal
+#spring.data.mongodb.port=27017
