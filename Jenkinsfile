@@ -54,7 +54,7 @@ pipeline {
             
             // Run the docker build command
            
-   sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile/Dockerfile ."
+   sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile1 ."
                       
     //sh 'docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile .'        
   //sh 'docker build -t agrotech-backend-image:latest -f /root/Agro-Tech/Agro-Tech/Dockerfile/Dockerfile .'
