@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -56,7 +57,7 @@ pipeline {
            
    sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile ."
 
-  //sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
+  sh 'docker build -t agrotech-frontend-image:latest -f /root/Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
                         
 
 }
