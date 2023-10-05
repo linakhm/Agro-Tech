@@ -74,7 +74,7 @@ pipeline {
                      sh 'docker login -u linakhm87 -p ${docker_variable}'
 }
            // sh 'docker push agrotech-backend-image:latest'
-            sh 'docker push agrotech-backend-image:latest' 
+            sh 'docker push /var/lib/jenkins/workspace/Agro-Tech-DevOps/agrotech-backend-image:latest' 
            // sh 'docker push linakhm87/agrotech-frontend-image:latest'
 
                    }
