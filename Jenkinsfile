@@ -73,7 +73,7 @@ pipeline {
     
                      sh 'docker login -u linakhm87 -p ${docker_variable}'
 }
-            sh 'docker push agrotech-backend-image:latest
+            sh 'docker push agrotech-backend-image:latest'
            // sh 'docker push linakhm87/agro-tech-devops-2023:Agro-Tech-backend' 
            // sh 'docker push linakhm87/agrotech-frontend-image:latest'
 
