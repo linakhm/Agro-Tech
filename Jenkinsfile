@@ -54,7 +54,7 @@ pipeline {
             
             // Run the docker build command
            
-   sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile1 ."
+   sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile ."
 
   //sh 'docker build -t agrotech-frontend-image:latest -f /Agro-Tech-Frontend/Agro-Tech-Angular/Dockerfile .'
                         
@@ -73,8 +73,8 @@ pipeline {
     
                      sh 'docker login -u linakhm87 -p ${docker_variable}'
 }
-            
-            sh 'docker push linakhm87/agro-tech-devops-2023:Agro-Tech-backend' 
+            sh 'docker push agrotech-backend-image:latest
+           // sh 'docker push linakhm87/agro-tech-devops-2023:Agro-Tech-backend' 
            // sh 'docker push linakhm87/agrotech-frontend-image:latest'
 
                    }
