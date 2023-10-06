@@ -88,10 +88,8 @@ stage('Docker Build frontend image') {
 
                      sh 'docker push linakhm87/agrotech-backend-image:latestimage'
 }
-            //sh 'docker push agrotech-backend-image:latest' }
-            //sh 'docker push /var/lib/jenkins/workspace/agro-tech-devops/agrotech-backend-image:latest' 
-           // sh 'docker push linakhm87/agrotech-frontend-image:latest'
-
+                     sh 'docker push linakhm87/agrotech-frontend-image:latestimage' }
+     
                    }
                     
             }
@@ -112,7 +110,7 @@ stage('Docker Build frontend image') {
             }
         }
     
- }   
+ }  
 
     post {
         success {
@@ -125,7 +123,8 @@ stage('Docker Build frontend image') {
         }
     }
    
-   }
+   
+   
     
   
    
