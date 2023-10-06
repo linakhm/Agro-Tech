@@ -1,0 +1,144 @@
+<div class="logo">
+    <a class="simple-text">
+        <div class="logo-img">
+            <img src="/assets/img/logo.png" />
+        </div>
+        Agrotech
+
+    </a>
+</div>
+<div class="sidebar-wrapper">
+    <div *ngIf="isMobileMenu()">
+        <form class="navbar-form">
+            <span class="bmd-form-group">
+                <div class="input-group no-border">
+                    <input type="text" value="" class="form-control" placeholder="{{'Search'|translate}}">
+                    <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                        <i class="material-icons">search</i>
+                        <div class="ripple-container"></div>
+                    </button>
+                </div>
+            </span>
+        </form>
+        <ul class="nav navbar-nav nav-mobile-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">
+                    <i class="material-icons">dashboard</i>
+                    <p>
+                        <span class="d-lg-none d-md-block">Stats</span>
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">notifications</i>
+                    <span class="notification">5</span>
+                    <p>
+                        <span class="d-lg-none d-md-block">Some Actions</span>
+                    </p>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+
+                    <a class="dropdown-item" href="#">Another Notification</a>
+                    <a class="dropdown-item" href="#">Another One</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">
+                    <i class="material-icons">person</i>
+                    <p>
+                        <span class="d-lg-none d-md-block">Account</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- <ul class="nav">
+        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" [routerLink]="[menuItem.path]">
+                <i class="material-icons">{{menuItem.icon}}</i>
+                <p>{{menuItem.title | translate}}</p>
+            </a>
+        </li>
+    </ul> -->
+
+    <!--  -->
+    <!--  -->
+
+    <div id="sidebar-container" class="sidebar-expanded">
+
+        <ul class="sidebar-menu do-nicescrol "
+            style="list-style-type: none !important;padding-left: 5px !important; padding-top: 30px;">
+            <ng-container *ngFor="let menuItem of menuItems; let index1=index">
+                <li class="submenu" (click)="clickSubMenu(menuItem?.cateeg, $event.target)"
+                    style="cursor: pointer; padding: 10px !important;">
+                    <div  [ngStyle]="{'background-color': (selectedType1=='title1' && selectedIndex1==index1) ? '#394c1f' : '#ffffff'}"  class="submenu-title">
+                        <a id="admin" class="media align-items-center user-pointer collapsed"
+                            data-toggle="sidebar-colapse" data-target="#{{menuItem.id}}"
+                            style="font-size: 25px; font-weight: bold;padding: 10px !important;">
+                            <div (click)="handleClickTitle1(index1)" class="submenu-text">
+                                <i class="material-icons">{{menuItem.icon}}</i>
+                                <span id="product_span">
+                                    {{menuItem.label | translate}}
+                                </span>
+                            </div>
+                        </a>
+                    </div>
+                    <div id="{{menuItem.id}}" class="collapse">
+
+                        <ul class="nav">
+
+                            <li  *ngFor="let item of menuItem.SubCat; ; let index2=index" class="nav-item" id="cl"
+                                (click)="clickMenu(item?.category, $event.target)">
+                                    <a (click)="handleClickTitle2(index2);" [ngStyle]="{'background-color': (selectedType2=='title2' && selectedIndex2==index2 ) ? '#84ad46' : '#ffffff'}" class="nav-link">
+                                        <i class="material-icons">{{item.icon}}</i>
+                                        <p name="SubCat">{{item.label | translate}}</p>
+                                    </a>
+                                
+
+
+
+                                <div id="{{item.id}}" class="collapse">
+                                    <ul class="nav ml-3">
+
+                                        <li *ngFor="let subitem of item.subCategories ; let index3=index"
+                                            class="{{subitem.class}} nav-item"
+                                            (click)="clicksub(subitem?.title, $event.target)">
+                                            <a [ngStyle]="{'background-color': (selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 ) ? '#cdd848' : '#ffffff'}" (click)="handleClickTitle3(index3)" class="nav-link" [routerLink]="[subitem.path]">
+                                                <i class="material-icons">{{subitem.icon}}</i>
+                                                <p subcat>{{subitem.label | translate}}</p>
+                                            </a>
+
+                                            <div id="{{subitem.id}}" class="collapse">
+                                                <ul class="nav ml-3">
+
+                                                    <li *ngFor="let subit of subitem.SubC; let index4=index"
+                                                        class="{{subit.class}} nav-item">
+                                                        <a [ngStyle]="{'background-color': (selectedType4=='title4' && selectedIndex4==index4 && selectedType3=='title3' && selectedIndex3==index3 && selectedType2=='title2' && selectedIndex2==index2 ) ? '#e1e89c' : '#ffffff'}" (click)="handleClickTitle4(index4)" class="nav-link" [routerLink]="[subit.title]">
+                                                            <i class="material-icons">{{subit.icon}}</i>
+                                                            <p>{{subit.title | translate}}</p>
+                                                        </a>
+
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+            </ng-container>
+
+
+        </ul>
+    </div>
+
+</div>

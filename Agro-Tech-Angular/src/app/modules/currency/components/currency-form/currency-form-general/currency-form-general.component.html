@@ -1,0 +1,20 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "code" | translate }}</label>
+        <input class="form-control" name="code" (blur)="isBlurDCisvalid()" [(ngModel)]="currency.code" formControlName="code" required placeholder=" write your currency  code"
+            aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+            <div style="color: red;" *ngIf="DCisvalid" >code must be begger than 4</div>
+
+    </div>
+
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "name" | translate }}</label>
+        <input class="form-control" (blur)="isBlurDNisvalid()" name="name" formControlName="name" [(ngModel)]="currency.name" required placeholder=" write your currency  name"
+            aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+            <div style="color: red;" *ngIf="DNisvalid" >name must be longer than 2 caracters</div>
+    </div>
+
+</div>

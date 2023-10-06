@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="form-group col-md-6">
+    <label for="address">{{ "address" | translate }}</label>
+    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="growout.address" placeholder=" write your Address"/>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaCode">{{ "wilayaCode" | translate }}</label>
+    <input class="form-control" name="wilayaCode" #wilayaCode="ngModel" ngModel [(ngModel)]="growout.wilayaCode" placeholder=" write your code wilaya">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{ "wilayaCode" | translate }}</label>
+    <input class="form-control" name="wilayaCode" #wilayaName="ngModel" ngModel [(ngModel)]="growout.wilayaName" placeholder=" write your name wilaya" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{ "zipCode" | translate }}</label>
+    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="growout.zipCode" placeholder=" write your code zip" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="phone">{{ "phone" | translate }}</label>
+    <input class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="growout.phoneNumber" placeholder=" write your phone">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="email">{{ "email" | translate }}</label>
+    <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="growout.email" placeholder=" write your email">
+  </div>
+</div>
+
+
+
+<!--  
+<div class="form-group" *ngIf="currentStep === 2">
+  <div class="form-group col-md-6">
+    <label class="required" for="phone">{{ "phone" | translate }}</label>
+    <input class="form-control" name="phone" #phone="ngModel" [(ngModel)]="growout.phone" required />
+    <div
+      *ngIf="myForm.controls['phone'].invalid && (myForm.controls['phone'].dirty || myForm.controls['phone'].touched)">
+      <div *ngIf=" myForm.controls[ 'phone' ].errors.required">le champ phone est obligatoire</div>
+    </div>
+  </div>
+  <div class=" form-group col-md-6 ">
+    <label class=" required " for=" email ">{{ " email " | translate }}</label>
+    <input class=" form-control " name=" email " #email=" ngModel " [(ngModel)]=" growout.email " required />
+    <div
+      *ngIf=" myForm.controls['email'].invalid && (myForm.controls['email'].dirty || myForm.controls[ 'email' ].touched)">
+      <div *ngIf=" myForm.controls[ 'email' ].errors.required ">le champ email est obligatoire</div>
+    </div>
+  </div>
+</div> -->

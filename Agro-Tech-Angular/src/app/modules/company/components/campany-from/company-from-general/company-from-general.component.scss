@@ -1,0 +1,15 @@
+.required:after {
+  content: "*";
+  color: rgb(0, 0, 0);
+}
+
+// input:required 
+//   {
+//     color: red;
+//     border: 2px solid red;
+// }
+
+// input:required:invalid {
+ 
+//     border: 2px solid rgb(241, 241, 241);
+// }

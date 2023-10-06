@@ -1,0 +1,20 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+    <div *ngIf="currentStep == 0 && beginninginventory">
+        <app-beginninginventory-details [beginninginventory]="beginninginventory"></app-beginninginventory-details>
+
+    </div>
+    <div *ngIf="currentStep == 1 && beginninginventory">
+        <app-beginninginventory-products [beginninginventory]="beginninginventory"></app-beginninginventory-products>
+    </div>
+    <div *ngIf="currentStep == 2 && beginninginventory">
+
+        <app-beginninginventory-transactions [beginninginventory]="beginninginventory"></app-beginninginventory-transactions>
+    </div>
+
+
+
+
+
+</form>

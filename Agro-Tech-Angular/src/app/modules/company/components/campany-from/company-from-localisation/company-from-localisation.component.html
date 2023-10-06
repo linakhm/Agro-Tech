@@ -1,0 +1,75 @@
+<!-- <div [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label for="address">{{ "address" | translate }} </label>
+    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="camp.address">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityCode">{{ "codeCity" | translate }}</label>
+    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="camp.cityCode">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityName">{{ "nameCity" | translate }}</label>
+    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="camp.cityName">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{ "wilayaName" | translate }}</label>
+    <input class="form-control" name="wilayaName" #cityName="ngModel" ngModel [(ngModel)]="camp.wilayaName">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="zipCode">{{ "zipCode" | translate }}</label>
+    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="camp.zipCode">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="email">{{ "email" | translate }}</label>
+    <input type="email" class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="camp.email">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="phoneNumber">{{ "phone" | translate }}</label>
+    <input class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="camp.number">
+  </div>
+</div>
+ -->
+
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <label for="address">{{ "address" | translate }}</label>
+    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="camp.address"  placeholder="write your Address "/>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="codeCity">{{ "codeCity" | translate }}</label>
+    <input class="form-control" name="codeCity" #wilayaName="ngModel" ngModel [(ngModel)]="camp.cityCode"  placeholder="write your City code " />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="nameCity">{{ "nameCity" | translate }}</label>
+    <input class="form-control" name="nameCity" #nameCity="ngModel" ngModel [(ngModel)]="camp.cityName"  placeholder="write your city name " />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{ "wilayaName" | translate }}</label>
+    <input class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="camp.wilayaName"  placeholder="write your wilaya name " />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="zipCode">{{ "zipCode" | translate }}</label>
+    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="camp.zipCode"  placeholder="write your zip code ">
+  </div>
+
+
+  <div class="form-group col-md-6">
+    <label for="phone">{{ "phone" | translate }}</label>
+    <input class="form-control" name="phone" #phone="ngModel" ngModel [(ngModel)]="camp.number"   placeholder="write your phone "/>
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="email">{{ "email" | translate }}</label>
+    <input class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="camp.email"  placeholder="write your email " />
+  </div>
+</div>

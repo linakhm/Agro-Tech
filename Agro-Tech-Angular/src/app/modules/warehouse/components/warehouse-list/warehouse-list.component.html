@@ -1,0 +1,136 @@
+<div class="main-content">
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+    <div class="d-flex gap-2">
+      <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="onClickAdd()"
+        [title]="'btns.add' | translate">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="file.click()"
+        [title]="'btns.import' | translate">
+        <i class="fa fa-upload"></i>
+      </button>
+      <input (change)="onCSVImport($event)" hidden type="file" accept=".csv" #file>
+    </div>
+
+    <a routerLink="/warehouses/trash"><button class="btn btn-success pull-right">{{'Go To Trash' | translate}}</button></a>
+
+    <div class="form-group has-search">
+      <span class="fa fa-search form-control-feedback"></span>
+      <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
+      placeholder="{{'Search by name'|translate}}"  />
+    </div>
+  </div>
+
+  <div class="datatable">
+    <ng-container *ngIf="loading">
+      <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && warehousesPage.empty">
+      <app-no-data></app-no-data>
+    </ng-container>
+
+    <table class="table" *ngIf="!loading && !warehousesPage.empty">
+      <thead class="datatable-header">
+        <tr>
+          <th>
+            <strong>
+              {{'code' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'name' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'costCenter' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'division' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'primary' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'City' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'email' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'phone' | translate}}
+            </strong>
+          </th>
+          <th>
+            <strong>
+              {{'actions' | translate}}
+            </strong>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="text-sm">
+        <tr class="row-data" *ngFor="let warehouse of warehouses">
+          <td>
+            {{warehouse.code}}
+          </td>
+          <td>
+            {{warehouse.name}}
+          </td>
+          <td>
+            {{warehouse.costCenterName}}
+          </td>
+          <td>
+            {{warehouse.divisionName}}
+          </td>
+          <td>
+            {{ (warehouse.isPrimary ? 'message.yes' : 'message.no') | translate }}
+          </td>
+          <td>
+            {{warehouse.cityName}}
+          </td>
+          <td>
+            {{warehouse.email}}
+          </td>
+          <td>
+            {{warehouse.phoneNumber}}
+          </td>
+
+          <td class="d-flex gap-4">
+            <button class="text-primary datatable-action-btn" (click)="onClickEdit(warehouse.id!)"
+              [title]="'btns.edit' | translate">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="text-danger datatable-action-btn" (click)="onClickArchive(warehouse.id!)"
+              [title]="'btns.delete' | translate">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="warehousesPage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  </app-pagination>
+
+  <app-wizard-dialog [currentStep]="currentStep" [entity]="warehouse" [type]="'Warehouse'" [field]="null" #formModal>
+    <app-warehouse-form [currentStep]="currentStep" [warehouse]="warehouse">
+      <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
+        (onStepChange)="onStepChange($event)"></app-stepper>
+    </app-warehouse-form>
+  </app-wizard-dialog>
+
+  <app-confirm-dialog #archiveModal></app-confirm-dialog>
+</div>

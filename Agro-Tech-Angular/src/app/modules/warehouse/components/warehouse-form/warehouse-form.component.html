@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-warehouse-form-general [warehouse]="warehouse"></app-warehouse-form-general>
+  </div>
+
+  <div *ngIf="currentStep == 1">
+    <app-warehouse-form-information [warehouse]="warehouse"></app-warehouse-form-information>
+  </div>
+
+  
+
+</form>

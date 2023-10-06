@@ -1,0 +1,122 @@
+<div class="main-content">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
+                placeholder="{{'Search'|translate}}" >
+        </div>
+        <div class="text-end"> 
+            <a (click)="goto()"><button class="btn btn-success pull-right"> {{'Back to list'|translate}}</button></a>
+        </div>
+    </div>
+
+    <div class="datatable">
+
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && Page.empty">
+
+            <app-no-data></app-no-data>
+        </ng-container>
+
+
+        <table class="table" *ngIf="!loading && !Page.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                        <strong>
+                            {{'code' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'name' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'costCenter' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'division' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'primary' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'city' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'email' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'phone' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'actions' | translate}}
+                        </strong>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr class="row-data" *ngFor="let warehouse of warehouses">
+                    <td>
+                        {{warehouse.code}}
+                    </td>
+                    <td>
+                        {{warehouse.name}}
+                    </td>
+                    <td>
+                        {{warehouse.costCenterName}}
+                    </td>
+                    <td>
+                        {{warehouse.divisionName}}
+                    </td>
+                    <td>
+                        {{ (warehouse.isPrimary ? 'message.yes' : 'message.no') | translate }}
+                    </td>
+                    <td>
+                        {{warehouse.cityName}}
+                    </td>
+                    <td>
+                        {{warehouse.email}}
+                    </td>
+                    <td>
+                        {{warehouse.phoneNumber}}
+                    </td>
+                    <td class="d-flex gap-4">
+                        <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(warehouse.id!)"
+                            [title]="'btns.edit' | translate">
+                            {{'Restore line'|translate}}
+                        </button>
+                        <button class="text-danger datatable-action-btn" (click)="onClickDelete(warehouse.id!)"
+                            [title]="'btns.delete' | translate">
+                            {{'Delete permanently'|translate}}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="trashPage"
+        (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+    </app-pagination> -->
+
+    <app-confirm-dialog #deleteModal></app-confirm-dialog>
+
+</div>

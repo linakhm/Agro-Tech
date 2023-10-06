@@ -1,0 +1,51 @@
+<!-- <div class="row" [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label class="required" for="farmType">{{ "farmType" | translate }} </label>
+    <input class="form-control" name="farmType" formControlName="farmType" ngModel [(ngModel)]="cost.farmType"
+      [class.is-invalid]="isControlInValid('farmType')" [class.is-valid]="isControlValid('farmType')"
+      aria-invalid="true" (change)="geValues($event)" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="division_Code">{{ "division_Code" | translate }}</label>
+    <input class="form-control" name="cityCode" formControlName="division_Code" ngModel [(ngModel)]="cost.division_Code"
+      [class.is-invalid]="isControlInValid('division_Code')" [class.is-valid]="isControlValid('division_Code')"
+      aria-invalid="true" (change)="geValues($event)" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="division_Name">{{ "division_Name" | translate }}</label>
+    <input class="form-control" name="division_Name" formControlName="division_Name" ngModel
+      [(ngModel)]="cost.division_Name" [class.is-invalid]="isControlInValid('division_Name')"
+      [class.is-valid]="isControlValid('division_Name')" aria-invalid="true" (change)="geValues($event)" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="facilityType">{{ "facilityType" | translate }}</label>
+    <input class="form-control" name="facilityType" formControlName="facilityType" ngModel
+      [(ngModel)]="cost.facilityType" [class.is-invalid]="isControlInValid('facilityType')"
+      [class.is-valid]="isControlValid('facilityType')" aria-invalid="true" (change)="geValues($event)" />
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="form-group col-md-6">
+    <label for="address">{{ "address" | translate }} </label>
+    <input class="form-control" name="address" #address="ngModel" ngModel [(ngModel)]="cost.farmType" placeholder=" write your Address"  />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityCode">{{ "codeCity" | translate }}</label>
+    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="cost.division_Name"  placeholder=" write your City code " />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityName">{{ "nameCity" | translate }}</label>
+    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="cost.division_Code"  placeholder=" write your City name" />
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{ "wilayaName" | translate }}</label>
+    <input class="form-control" name="wilayaName" #cityName="ngModel" ngModel [(ngModel)]="cost.facilityType"   placeholder=" write your Wilaya name " />
+  </div>
+</div>

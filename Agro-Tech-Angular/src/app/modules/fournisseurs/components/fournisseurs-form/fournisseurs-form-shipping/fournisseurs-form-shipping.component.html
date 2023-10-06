@@ -1,0 +1,20 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="shippingAddress">{{'shippingAddress' | translate}}</label>
+        <input class="form-control" name="shippingAddress" ngModel [(ngModel)]="fournisseur.shippingAddress"
+               formControlName="shippingAddress" required aria-invalid="true" (change)="geValues($event)" />
+        <div *ngIf="addform.get('shippingAddress')?.errors?.required">
+            Shipping address is required.
+        </div>
+    </div>
+    
+    <div class="form-group col-md-6">
+        <label class="required" for="shippingCity">{{'shippingCity' | translate}}</label>
+        <input class="form-control" name="shippingCity" ngModel [(ngModel)]="fournisseur.shippingCity"
+               formControlName="shippingCity" required aria-invalid="true" (change)="geValues($event)" />
+        <div *ngIf="addform.get('shippingCity')?.errors?.required">
+            Shipping city is required.
+        </div>
+    </div>
+</div>

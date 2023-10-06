@@ -1,0 +1,33 @@
+<!-- <div class="row">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "code" | translate }}</label>
+        <input class="form-control" [class.is-invalid]="isControlInValid('code')"
+            [class.is-valid]="isControlValid('code')" name="code" ngModel [(ngModel)]="cost.code" formControlName="code"
+            (change)="geValues($event)" />
+
+        <div class="form-group col-md-6">
+            <label class="required" for="name">{{ "name" | translate }}</label>
+            <input class="form-control" name="name" [class.is-invalid]="isControlInValid('name')"
+                [class.is-valid]="isControlValid('name')" formControlName="name" ngModel [(ngModel)]="cost.name"
+                (change)="geValues($event)" />
+        </div>
+
+    </div> -->
+
+<div class="row"  [formGroup]="addform">
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "code" | translate }}</label>
+        <input (blur)="isBlur()" class="form-control" name="code" [(ngModel)]="cost.code" formControlName="code"  placeholder=" write your Cost center code "
+            required aria-invalid="true" type="number" aria-describedby="code-error" (keyup)="geValuesCode($event)">
+        <div style="border: 1px solid red; color : red;" *ngIf="minIstrueCode">code must be bigger than 5</div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="name">{{ "name" | translate }}</label>
+        <input (blur)="isBlur1()" class="form-control" name="name" formControlName="name" [(ngModel)]="cost.name"  placeholder=" write your Cost center name"
+            required aria-invalid="true" aria-describedby="name-error" (keyup)="geValuesNom($event)">
+        <div style="border: 1px solid red; color : red;" *ngIf="minIstrueName">name must be bigger than 2 caracters
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="row" [formGroup]="addprodform">
+
+    <div class="form-group col-md-4">
+        <label class="required" for="code">{{'code' | translate}}</label>
+        <input class="form-control" name="code" ngModel [(ngModel)]="produit.code" formControlName="code" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label class="required" for="name">{{'name' | translate}}</label>
+        <input class="form-control" name="name" ngModel [(ngModel)]="produit.name" formControlName="name" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label class="required" for="type">{{'type' | translate}}</label>
+      <!---  <input class="form-control" name="type" ngModel [(ngModel)]="produit.type" formControlName="type" (change)="geValues($event)">
+        -->
+
+        <select class="form-control" name="type" ngModel [(ngModel)]="produit.type" formControlName="type" (change)="geValues($event)">
+            <option value="FieldProducts">FieldProducts</option>
+            <option value="Medication">Medication</option>
+            <option value="Semen">Semen</option>
+            <option value="Vaccination">Vaccination</option>
+
+        </select>
+
+
+    </div>
+
+    <div class="form-group col-md-4 align-self-end">
+        <label for="status">
+            <input type="checkbox" id="status" name="status" ngModel [(ngModel)]="produit.status" formControlName="status" (change)="geValues($event)">
+            {{' status' | translate}}
+        </label>
+    </div>
+
+
+    <div class="form-group col-md-4">
+        <label for="currency">{{'currency' | translate}}</label>
+        <input class="form-control" name="currency" ngModel [(ngModel)]="produit.currency" formControlName="currency" (change)="geValues($event)">
+    </div>
+
+
+    <div class="form-group col-md-4">
+        <label for="inventory">{{'inventory' | translate}}</label>
+        <input class="form-control" name="inventory" ngModel [(ngModel)]="produit.inventory" formControlName="inventory" (change)="geValues($event)">
+    </div>
+
+
+    <div class="form-group col-md-4 align-self-end">
+        <label for="medicated">
+            <input type="checkbox" id="medicated" name="medicated" ngModel [(ngModel)]="produit.medicated" formControlName="medicated" (change)="geValues($event)" />
+            {{'medicated' | translate}}
+        </label>
+    </div>
+
+
+    <div class="form-group col-md-4">
+        <label for="manufacturer">{{'manufacturer' | translate}}</label>
+        <input class="form-control" name="manufacturer" ngModel [(ngModel)]="produit.manufacturer" formControlName="manufacturer" (change)="geValues($event)">
+    </div>
+
+
+    <div class="form-group col-md-4">
+        <label for="color">{{'color' | translate}}</label>
+        <input type="color" class="form-control" name="color" ngModel [(ngModel)]="produit.color" formControlName="color" (change)="geValues($event)">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="maxOver">{{'maxOver' | translate}}</label>
+        <input class="form-control" name="maxOver" ngModel [(ngModel)]="produit.maxOver" formControlName="maxOver" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="prixUnitaireHt">{{'prixUnitaireHt' | translate}}</label>
+        <input type="number" class="form-control" name="prixUnitaireHt" ngModel [(ngModel)]="produit.prixUnitaireHt" formControlName="prixUnitaireHt" (change)="geValues($event)">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="prixUnitaireTtc">{{'prixUnitaireTtc' | translate}}</label>
+        <input type="number" class="form-control" name="prixUnitaireTtc" ngModel [(ngModel)]="produit.prixUnitaireTtc" formControlName="prixUnitaireTtc" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="taxRate">{{'taxRate' | translate}}</label>
+        <input type="number" class="form-control" name="taxRate" ngModel [(ngModel)]="produit.taxRate" formControlName="taxRate" (change)="geValues($event)">
+    </div>
+    <div class="form-group col-md-4">
+        <label for="category">{{'category' | translate}}</label>
+
+        <select class="form-control" name="category" ngModel [(ngModel)]="produit.category" formControlName="category" (change)="geValues($event)">
+            <option value="Category1">Category1</option>
+            <option value="Category2">Category2</option>
+            <option value="Category3">Category3</option>
+        </select>
+    </div>
+
+</div>

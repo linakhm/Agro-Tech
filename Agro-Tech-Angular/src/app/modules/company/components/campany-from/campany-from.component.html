@@ -1,0 +1,15 @@
+<ng-content>
+</ng-content>
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-company-from-general [camp]="camp"></app-company-from-general>
+  </div>
+
+  <div *ngIf="currentStep == 1">
+    <app-company-from-localisation [camp]="camp"></app-company-from-localisation>
+  </div>
+
+
+
+</form>

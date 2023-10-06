@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\modules",
+    "\\src\\app\\modules\\fournisseurs",
+    "\\src\\app\\modules\\fournisseurs\\components",
+    "\\src\\app\\modules\\fournisseurs\\components\\fournisseurs-form",
+    "\\src\\app\\modules\\fournisseurs\\components\\fournisseurs-form\\fournisseurs-form-general",
+    "\\src\\app\\modules\\fournisseurs\\models",
+    "\\src\\app\\modules\\inventaireinitial",
+    "\\src\\app\\modules\\inventaireinitial\\models"
+  ],
+  "SelectedNode": "\\src\\app\\modules\\fournisseurs\\components\\fournisseurs-form",
+  "PreviewInSolutionExplorer": false
+}

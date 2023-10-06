@@ -1,0 +1,42 @@
+<div class="row" [formGroup]="addform">
+  <div class="form-group col-md-6">
+    <label class="required" for="code">{{ "code" | translate }}</label>
+    <input (blur)="isBlurDCisvalid()" class="form-control" name="code" [(ngModel)]="growout.code" formControlName="code" required placeholder=" write your Growout  code"
+      aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+      <div style="color: red;" *ngIf="DCisvalid" >code must be begger than 4</div>
+
+    </div>
+
+  <!-- <div class="form-group col-md-6">
+    <label class="required" for="code">{{ "code" | translate }}</label>
+    <input class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" required
+        aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+</div> -->
+
+  <div class="form-group col-md-6">
+    <label class="required" for="name">{{ "name" | translate }}</label>
+    <input (blur)="isBlurDNisvalid()" class="form-control" name="name" formControlName="name" [(ngModel)]="growout.name" required placeholder=" write your Growout  name"
+      aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+      <div style="color: red;" *ngIf="DNisvalid" >name must be longer than 2 caracters</div>
+
+    </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="codeCity">{{ "codeCity" | translate }}</label>
+    <!-- <input (blur)="isBlurSTisvali()" type="number" class="form-control" name="codeCity" formControlName="codeCity" [(ngModel)]="growout.codeCity" placeholder=" write your City code"
+      aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)"> -->
+      <select (click)="selectVAlue($event)"  type="number" class="form-control" name="codeCity" formControlName="codeCity" [(ngModel)]="growout.codeCity" placeholder=" write your City code">
+        <option *ngFor="let dv of divisions" [value]="dv.code" > {{dv.code}}</option>
+      </select>
+      <div style="color: red;" *ngIf="STisvali" >code City must be 5 number</div>
+
+    </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="nameCity">{{"nameCity" | translate }}</label>
+    <input  (blur)="isBlurMisvalid()"  class="form-control" name="nameCity" formControlName="nameCity" [(ngModel)]="growout.nameCity" placeholder=" write your City name"
+      aria-describedby="code-error" required aria-invalid="true" (ngModelChange)="geValues($event)" />
+      <div style="color: red;" *ngIf="Misvalid" >name City must be longer than 2 caracters</div>
+
+    </div>
+</div>

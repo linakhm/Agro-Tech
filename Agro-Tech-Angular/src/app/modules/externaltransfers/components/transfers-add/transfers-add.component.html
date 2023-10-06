@@ -1,0 +1,19 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+
+    <div *ngIf="currentStep == 0">
+        <app-transfers-general [externaltransfer]="externaltransfer"></app-transfers-general>
+    </div>
+
+    <div *ngIf="currentStep == 1">
+        <app-transfers-details [externaltransfer]="externaltransfer"></app-transfers-details>
+    </div>
+
+    <div *ngIf="currentStep == 2">
+        <app-transfers-cost-center [externaltransfer]="externaltransfer"></app-transfers-cost-center>
+    </div>
+    <div *ngIf="currentStep == 3">
+      <app-transfers-produit [externaltransfer]="externaltransfer"></app-transfers-produit>
+    </div>
+</form>

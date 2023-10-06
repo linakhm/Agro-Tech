@@ -1,0 +1,103 @@
+<div class="row" [formGroup]="addForm">
+
+  <div class="form-group col-md-6">
+    <label class="required" for="code">{{ "code" | translate }}</label>
+    <input (blur)="isBlurDCisvalid()" class="form-control" name="code" [(ngModel)]="warehouse.code" formControlName="code" required placeholder=" write your code warehouse"
+      aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+      <div style="color: red;" *ngIf="DCisvalid" >code must be begger than 4</div>
+
+  </div>
+
+  <div class="form-group col-md-6">
+    <label class="required" for="name">{{ "name" | translate }}</label>
+    <input (blur)="isBlurDNisvalid()" class="form-control" name="name" [(ngModel)]="warehouse.name" formControlName="name" required placeholder=" write your name warehouse"
+      aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+      <div style="color: red;" *ngIf="DNisvalid" >name must be longer than 2 caracters</div>
+
+    </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="costCenterCode">{{ "costCenterCode" | translate }}</label>
+    <input (blur)="isBlurCCCisvalid()" class="form-control" name="costCenterCode" ngModel [(ngModel)]="warehouse.costCenterCode" placeholder=" write your cost Center Code"
+      formControlName="costCenterCode" required aria-invalid="true" (change)="geValues($event)">
+      <div style="color: red;" *ngIf="CCCisvalid" >cost Center Code must be longer than 2 caracters</div>
+
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="costCenterName">{{ "costCenterName" | translate }}</label>
+    <input (blur)="isBlurCCNisvalid()" class="form-control" name="costCenterName" ngModel [(ngModel)]="warehouse.costCenterName" placeholder=" write your cost Center name"
+      formControlName="costCenterName" required aria-invalid="true" (change)="geValues($event)">
+      <div style="color: red;" *ngIf="CCNisvalid" >cost Center Name must be longer than 2 caracters</div>
+
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="isPrimary">{{ "isPrimary  " | translate }}   </label>
+    <select class="form-control"
+     name="isPrimary"
+     formControlName="isPrimary"
+      required
+      aria-invalid="true"
+      aria-describedby="code-error" 
+      (click)="isPrimaryValid()"
+      >
+      <option  [value]="true">
+         True
+      </option>
+      <option  [value]="false">
+        False
+       </option>
+    </select>
+    <div style="color: red;" *ngIf="isprimaryvalidation()" >you must chose</div>
+
+    <!-- <input class="form-control" name="isPrimary" ngModel [(ngModel)]="warehouse.isPrimary" formControlName="isPrimary"
+      required aria-invalid="true" (change)="geValues($event)"> -->
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="email">{{ "email" | translate }}</label>
+    <input (blur)="isMaiLisvalid()" class="form-control" name="email"
+       formControlName="email" ngModel [(ngModel)]="warehouse.email" required placeholder=" write your email"
+      aria-invalid="true" (change)="geValues($event)">
+      <div style="color: red;" *ngIf="maiLisvalid" >this must be a valid email</div>
+
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="divisionName">{{ "divisionName" | translate }}</label>
+    <input class="form-control" name="divisionName" ngModel [(ngModel)]="warehouse.divisionName" placeholder=" write your code wilaya"
+      formControlName="divisionName" required aria-invalid="true" (change)="geValues($event)">
+  </div>
+  <div class="form-group col-md-6">
+    <label class="required" for="startingDate">{{ "startingDate" | translate }}</label>
+    <input class="form-control" type="date" name="startingDate" ngModel [(ngModel)]="warehouse.startingDate" placeholder=" write your code wilaya"
+      formControlName="startingDate" required aria-invalid="true" (change)="geValues($event)">
+  </div>
+
+
+  <div class="form-group col-md-6">
+    <label class=" required " for=" type ">{{'facilityType ' | translate}} </label>
+    <select aria-placeholder="you must select"  class="form-control" name="type" [(ngModel)]="warehouse.type" formControlName="facilityType" required
+      aria-invalid="true" aria-describedby="code-error" (click)="isfacilityTypeValid($event)">
+      <option *ngFor=" let type of types " [value]="type">
+        {{type}}
+      </option>
+    </select>
+    <div style="color: red;" *ngIf="isprimarytype()" >you must chose</div>
+  </div>
+  <div class="form-group col-md-6">
+    <label class=" required " for=" vendor ">{{'vendor' | translate}}</label>
+    <select select class=" form-control " name="vendor" ngModel [(ngModel)]="warehouse.vendor" formControlName="vendor"
+      required>
+      <option *ngFor=" let vendor of vendors " [value]=" vendor ">
+        {{vendor}}
+      </option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label class=" required " for=" costCenterType ">{{'costCenterType' | translate}}</label>
+    <select select class=" form-control " name="costCenterTypes" ngModel [(ngModel)]=" warehouse.costCenterType"
+      formControlName="costCenterType" required>
+      <option *ngFor=" let costCenterType of costCenterTypes" [value]="costCenterType">
+        {{costCenterType}}
+      </option>
+    </select>
+  </div>
+
+</div>

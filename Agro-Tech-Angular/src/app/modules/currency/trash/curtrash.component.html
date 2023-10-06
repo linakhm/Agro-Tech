@@ -1,0 +1,72 @@
+<div class="main-content">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
+            placeholder="{{'Search'|translate}}">
+
+        </div>
+        <div class="text-end"> 
+            <a (click)="goto()"><button class="btn btn-success pull-right">{{'Back to list'|translate}}</button></a>
+        </div>
+    </div>
+
+    <div class="datatable">
+
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && Page.empty">
+
+            <app-no-data></app-no-data>
+        </ng-container>
+
+
+        <table class="table" *ngIf="!loading && !Page.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                        <strong>
+                            {{'code' | translate}}
+                        </strong>
+                    </th>
+                    <th>
+                        <strong>
+                            {{'name' | translate}}
+                        </strong>
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr class="row-data" *ngFor="let currency of currencys">
+                    <td>
+                        {{currency.code}}
+                    </td>
+                    <td>
+                        {{currency.name}}
+                    </td>
+
+                    <td class="d-flex gap-4">
+                        <button class="text-primary datatable-action-btn" (click)="onClickdisArchive(currency.id!)"
+                            [title]="'btns.edit' | translate">
+                            {{'Restore line'|translate}}
+                        </button>
+                        <button class="text-danger datatable-action-btn" (click)="onClickDelete(currency.id!)"
+                            [title]="'btns.delete' | translate">
+                            {{'Delete permanently'|translate}}
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="trashPage"
+        (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+    </app-pagination> -->
+
+
+
+</div>

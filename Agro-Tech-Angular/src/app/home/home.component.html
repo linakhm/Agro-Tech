@@ -1,0 +1,124 @@
+<!-- <div class="wrapper" style="    display: block;
+margin-left: 15rem;
+margin-right: 15rem;">
+
+<div class="main-content">
+
+    <div class="row">
+            <h3> Pays</h3>
+            <select class="custom-select" #countries (change)="onSelectedCountry(countries.value)">
+                <option default>Choisissez un pays...</option>
+                <option value="Tunisia" >Tunisie </option>
+                <option value="Algeria" >Algérie </option>
+
+            </select>
+
+
+            <h3> Produit</h3>
+            <select class="custom-select" #products (change)="onSelectedProduct(products.value)">
+                <option default>Choisissez un produit...</option>
+                <option value = "OLIVE_OIL">Huile d'olive</option>
+                <option value = "POTATOES">Pomme de terre</option>
+                <option value = "AGRUMES">Agrumes</option>
+                <option value = "CEREALE">Céréale</option>
+
+            </select>
+
+            <h3 *ngIf="productName == 'POTATOES' || productName == 'AGRUMES' || productName == 'CEREALE' "> Variété</h3>
+            <select *ngIf="productName == 'POTATOES'"  class="custom-select" #varieties (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value = "NONE">Non Spécifié</option>
+                <option value = "PRIMEUR">Primeur</option>
+                <option value = "SAISON">Saison</option>
+                <option value = "ARRIERE_SAISON">Arriére Saison</option>
+
+            </select>
+
+            <select *ngIf="productName == 'AGRUMES'"  class="custom-select" #varieties (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value = "NONE">Non Spécifié</option>
+                <option value = "CITRONS">Citrons</option>
+                <option value = "MANDARINES">Mandarines</option>
+                <option value = "ORANGE_TOMPSON">Orange Tompson</option>
+
+            </select>
+
+            <select *ngIf="productName == 'CEREALE'"  class="custom-select" #varieties (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value = "NONE">Non Spécifié</option>
+                <option value = "BLE_DUR">Blé dur</option>
+                <option value = "BLE_TENDRE">Blé tendre</option>
+                <option value = "ORGE">Orge</option>
+                <option value = "TRITICALE">Triticale</option>
+
+
+            </select>
+
+            <button type="button" (click)="onClick()"  class="btn btn-outline-success">Valider</button>
+</div>
+</div>
+</div> -->
+
+<div class="wrapper" style="    display: block;
+margin-left: 15rem;
+margin-right: 15rem;">
+
+    <div class="main-content">
+
+        <div class="row">
+            <h3> Pays</h3>
+            <select class="custom-select" #countries (change)="onSelectedCountry(countries.value)">
+                <option default>Choisissez un pays...</option>
+                <option value="Tunisia">Tunisie </option>
+                <option value="Algeria">Algérie </option>
+
+            </select>
+
+
+            <h3> Produit</h3>
+            <select class="custom-select" #products (change)="onSelectedProduct(products.value)">
+                <option default>Choisissez un produit...</option>
+                <option value="OLIVE_OIL">Huile d'olive</option>
+                <option value="POTATOES">Pomme de terre</option>
+                <option value="AGRUMES">Agrumes</option>
+                <option value="CEREALE">Céréale</option>
+
+            </select>
+
+            <h3 *ngIf="productName == 'POTATOES' || productName == 'AGRUMES' || productName == 'CEREALE' "> Variété</h3>
+            <select *ngIf="productName == 'POTATOES'" class="custom-select" #varieties
+                (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value="NONE">Non Spécifié</option>
+                <option value="PRIMEUR">Primeur</option>
+                <option value="SAISON">Saison</option>
+                <option value="ARRIERE_SAISON">Arriére Saison</option>
+
+            </select>
+
+            <select *ngIf="productName == 'AGRUMES'" class="custom-select" #varieties
+                (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value="NONE">Non Spécifié</option>
+                <option value="CITRONS">Citrons</option>
+                <option value="MANDARINES">Mandarines</option>
+                <option value="ORANGE_TOMPSON">Orange Tompson</option>
+
+            </select>
+
+            <select *ngIf="productName == 'CEREALE'" class="custom-select" #varieties
+                (change)="onSelectedVariety(varieties.value)">
+                <option default>Choisissez une variété ...</option>
+                <option value="NONE">Non Spécifié</option>
+                <option value="BLE_DUR">Blé dur</option>
+                <option value="BLE_TENDRE">Blé tendre</option>
+                <option value="ORGE">Orge</option>
+                <option value="TRITICALE">Triticale</option>
+
+
+            </select>
+
+            <button type="button" (click)="onClick()" class="btn btn-outline-success">Valider</button>
+        </div>
+    </div>
+</div>

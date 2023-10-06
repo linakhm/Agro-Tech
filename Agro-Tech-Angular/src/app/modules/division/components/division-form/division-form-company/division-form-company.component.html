@@ -1,0 +1,15 @@
+<div class="row" >
+
+    <div class="form-group col-md-6">
+        <label for="company">{{'company' | translate}}</label>
+        <select class="form-control" name="company"  #company="ngModel" ngModel [(ngModel)]="division.campany!.id"  aria-placeholder="--Select your Campany--"
+            (ngModelChange)="onCompanyChange()">
+            <option value="" [selected]> --Select your Campany-- </option>
+            <option *ngFor="let comp of companys" [value]="comp.id">
+                {{comp.code}}
+            </option>
+        </select>
+    </div>
+
+
+</div>

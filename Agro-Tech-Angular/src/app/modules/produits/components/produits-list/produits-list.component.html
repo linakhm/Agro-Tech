@@ -1,0 +1,180 @@
+<div class="main-content">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div class="d-flex gap-2">
+            <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="onClickAddForm()"
+                    [title]="'btns.add' | translate">
+                <i class="fa fa-plus"></i>
+            </button>
+            <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="openImportModal()"
+                    [title]="'btns.import' | translate">
+                <i class="fa fa-upload"></i>
+            </button>
+        </div>
+
+
+        <a routerLink="/trash"><button class="btn btn-success pull-right" (click)="findArchivedProducts()"> Go To Trash</button>
+        </a>
+        <div class="form-group has-search">
+
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="number" placeholder="Search by tax Rate" [(ngModel)]="searchTaxRate" name="searchTaxRate"><br>
+                <br>   <input class="form-control mr-sm-2" type="text" placeholder="Search by category" [(ngModel)]="searchCategory" name="searchCategory">
+                <br><button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="searchProducts()">Find</button>
+            </form>
+          
+
+        </div>
+    </div>
+
+
+  <div class="datatable">
+
+    <ng-container *ngIf="loading">
+      <app-spinner></app-spinner>
+    </ng-container>
+
+    <ng-container *ngIf="!loading && produitsPage.empty">
+      <app-no-data></app-no-data>
+    </ng-container>
+
+    <table class="table" *ngIf="!loading && !produitsPage.empty">
+      <thead class="datatable-header">
+          <tr>
+              <th>
+                  <strong>
+                      {{'code' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'name' | translate}}
+                  </strong>
+              </th>
+
+              <th>
+                  <strong>
+                      {{'status' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'medication ' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'prixUnitaireHt' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'taxRate' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'prixTTC' | translate}}
+                  </strong>
+              </th>
+
+              <th>
+                  <strong>
+                      {{'category' | translate}}
+                  </strong>
+              </th>
+              <th>
+                  <strong>
+                      {{'actions' | translate}}
+                  </strong>
+              </th>
+          </tr>
+      </thead>
+      <tbody class="text-sm">
+          <tr class="row-data" *ngFor="let produit of produits">
+              <td>
+                  {{produit.code}}
+              </td>
+              <td>
+                  {{produit.name}}
+              </td>
+
+              <td>
+                  <i *ngIf="!produit.status" class="zmdi zmdi-close text-danger text-lg">inactive</i>
+                  <i *ngIf="produit.status" class="zmdi zmdi-check text-success text-lg">active</i>
+              </td>
+
+             
+              <td>
+                  <i *ngIf="!produit.medicated" class="zmdi zmdi-close text-danger text-lg">not medicated</i>
+                  <i *ngIf="produit.medicated" class="zmdi zmdi-check text-success text-lg">medicated</i>
+              </td>
+
+              <td>
+                  {{produit.prixUnitaireHt}}
+              </td>
+              <td>
+                  {{produit.taxRate}}%
+              </td>
+              <td>
+                  {{produit.prixUnitaireTtc}}
+              </td>
+
+              <td>
+                  {{produit.category}}
+              </td>
+
+
+              <td class="d-flex gap-4">
+                  <button class="text-primary datatable-action-btn" (click)="onClickEditForm(produit.id!)"
+                          [title]="'btns.edit' | translate">
+                      <i class="fa fa-pencil"></i>
+                  </button>
+
+                  <button class="text-danger datatable-action-btn" (click)="onClickDelete(produit?.id)"
+                          [title]="'btns.delete' | translate">
+                      <i class="fa fa-trash"></i>
+                  </button>
+                  <button class="text-danger datatable-action-btn" (click)="onClickArchive(produit?.id)"
+                          [title]="'btns.archive' | translate">
+                      <i class="fa fa-archive"></i>
+                  </button>
+              </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+  <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="produitsPage"
+    (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+  </app-pagination>
+
+  <app-wizard-dialog [currentStep]="currentStep" #formModal>
+    <app-produits-form [currentStep]="currentStep" [produit]="produit">
+      <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
+        (onStepChange)="onStepChange($event)"></app-stepper>
+    </app-produits-form>
+  </app-wizard-dialog>
+
+  <app-dialog #importModal>
+    <div class="d-flex align-items-center justify-content-around my-2">
+      <button class="btn btn-add btn-outline-success" (click)="onDownloadCSVTempalte()"
+        [title]="'btns.download' | translate">
+        <i class="fa fa-download"></i>
+        {{'message.download-csv-template' | translate}}
+      </button>
+      <button class="btn btn-add btn-outline-success" (click)="fileInput.click()" [title]="'btns.import' | translate">
+        <i class="fa fa-upload"></i>
+        {{'btns.select-file' | translate}}
+      </button>
+    </div>
+
+    <div *ngIf="file" class="d-flex align-items-center gap-2 justify-content-center">
+      <i class="fa fa-file"></i>
+      <strong>{{file.name}}</strong>
+    </div>
+    <input (change)="onCSVChange($event)" hidden type="file" accept=".csv" #fileInput>
+  </app-dialog>
+
+  <app-confirm-dialog #deleteModal></app-confirm-dialog>
+</div>

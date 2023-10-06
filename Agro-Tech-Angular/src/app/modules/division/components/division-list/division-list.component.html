@@ -1,0 +1,134 @@
+<div class="main-content">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <div class="d-flex gap-2">
+            <button class="btn btn-add btn-outline-success btn-sm btn-action" (click)="onClickAdd()"
+                [title]="'btns.add' | translate">
+                <i class="fa fa-plus"></i>
+            </button>
+        </div>
+
+        <a routerLink="/division/trash"><button class="btn btn-success pull-right"> {{'Go To Trash' | translate}}</button></a>
+
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input #search (input)="onFilterChange(search.value)" type="text" class="form-control bg-white"
+            placeholder="{{'Search by name'|translate}}" >
+        </div>
+    </div>
+
+    <div class="datatable">
+
+        <ng-container *ngIf="loading">
+            <app-spinner></app-spinner>
+        </ng-container>
+
+        <ng-container *ngIf="!loading && divisionPage.empty">
+            <app-no-data></app-no-data>
+        </ng-container>
+
+        <table class="table" *ngIf="!loading && !divisionPage.empty">
+            <thead class="datatable-header">
+                <tr>
+                    <th>
+                      <strong>
+                        {{'code' | translate}}
+                        <a href="javascript:void(0);">
+                          <svg (click)="sortByCode()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+          
+                          </svg>
+                        </a>
+                      </strong>
+                    </th>
+                    <th>
+                      <strong>
+                        {{'name' | translate}}
+                        <a href="javascript:void(0);">
+                          <svg (click)="sortByName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+          
+                          </svg>
+                        </a>
+                      </strong>
+                    </th>
+                    <th>
+                      <strong>
+                        {{'Address' | translate}}
+                        <a href="javascript:void(0);">
+                          <svg (click)="sortByAddress()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+          
+                          </svg>
+                        </a>
+                      </strong>
+                    </th>
+                    <th>
+                      <strong>
+                        {{'nameCity' | translate}}
+                        <a href="javascript:void(0);">
+                          <svg (click)="sortByCityName()" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-chevron-double-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                              d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z" />
+          
+                          </svg>
+                        </a>
+                      </strong>
+                    </th>
+                    <th>
+                      <strong>
+                        {{'actions' | translate}}
+                      </strong>
+                    </th>
+          
+                  </tr>
+            </thead>
+            <tbody class="text-sm">
+                <tr class="row-data" *ngFor="let div of divisions">
+                    <td>
+                        {{div.code}}
+                    </td>
+                    <td>
+                        {{div.name}}
+                    </td>
+                    <td>
+                        {{div.address}}
+                    </td>
+                    <td>
+                        {{div.nameCity}}
+                    </td>
+
+                    <td class="d-flex gap-4">
+                        <button class="text-primary datatable-action-btn" (click)="onClickEdit(div.id!)"
+                            [title]="'btns.edit' | translate">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                        <button class="text-danger datatable-action-btn" (click)="onClickArchive(div.id!)"
+                            [title]="'btns.delete' | translate">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <app-pagination [pageNumber]="pageNumber" [pageSize]="pageSize" [page]="divisionPage"
+        (onPageNumberChange)="onPageNumberChange($event)" (onPageSizeChange)="onPageSizeChange($event)">
+    </app-pagination>
+
+    <app-wizard-dialog [currentStep]="currentStep" #formModal [entity]="division" [type]="'division'" [field]="null">
+        <app-division-form [currentStep]="currentStep" [division]="division">
+            <app-stepper #stepper [currentStep]="currentStep" [steps]="steps"
+                (onStepChange)="onStepChange($event)"></app-stepper>
+        </app-division-form>
+    </app-wizard-dialog>
+
+    <app-confirm-dialog #archiveModal></app-confirm-dialog>
+
+</div>

@@ -1,0 +1,21 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-fournisseurs-form-general [fournisseur]="fournisseur"></app-fournisseurs-form-general>
+  </div>
+
+  <div *ngIf="currentStep == 1">
+    <app-fournisseurs-form-information [fournisseur]="fournisseur"></app-fournisseurs-form-information>
+  </div>
+
+  <div *ngIf="currentStep == 2">
+    <app-fournisseurs-form-shipping [fournisseur]="fournisseur"></app-fournisseurs-form-shipping>
+  </div>
+    <!--
+  <div *ngIf="currentStep == 3">
+    <app-fournisseurs-form-vendor-sku [fournisseur]="fournisseur"></app-fournisseurs-form-vendor-sku>
+  </div>
+    !-->
+</form>

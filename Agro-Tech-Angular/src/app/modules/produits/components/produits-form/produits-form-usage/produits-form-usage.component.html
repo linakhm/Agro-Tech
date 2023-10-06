@@ -1,0 +1,17 @@
+<div class="row" *ngIf="produit.productusage">
+  <div class="form-group col-md-6">
+    <label for="transactionDate">{{'transactionDate' | translate}}</label>
+    <input type="date" class="form-control" name="transactionDate" #transactionDate="ngModel" ngModel
+      [(ngModel)]="produit.productusage.transactionDate">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="farmCode">{{'farmCode' | translate}}</label>
+    <input class="form-control" name="farmCode" #farmCode="ngModel" ngModel
+      [(ngModel)]="produit.productusage.farmCode">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="houseCode">{{'houseCode' | translate}}</label>
+    <input class="form-control" name="houseCode" #houseCode="ngModel" ngModel
+      [(ngModel)]="produit.productusage.houseCode">
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="form-group col-md-6">
+    <label for="address1">{{'address' | translate}} 1</label>
+    <input class="form-control" name="address1" #address1="ngModel" ngModel [(ngModel)]="warehouse.address1" placeholder=" write your Address 1">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="address2">{{'address' | translate}} 2</label>
+    <input class="form-control" name="address2" #address2="ngModel" ngModel [(ngModel)]="warehouse.address2" placeholder=" write your Address 2">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityCode">{{'codeCity' | translate}}</label>
+    <input class="form-control" name="cityCode" #cityCode="ngModel" ngModel [(ngModel)]="warehouse.cityCode" placeholder=" write your city  code">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="cityName">{{'nameCity' | translate}}</label>
+    <input class="form-control" name="cityName" #cityName="ngModel" ngModel [(ngModel)]="warehouse.cityName" placeholder=" write your city Name">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaCode">{{'wilayaCode' | translate}}</label>
+    <input class="form-control" name="wilayaCode" #wilayaCode="ngModel" ngModel [(ngModel)]="warehouse.wilayaCode" placeholder=" write your wilaya Code">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="wilayaName">{{'wilayaName' | translate}}</label>
+    <input class="form-control" name="wilayaName" #wilayaName="ngModel" ngModel [(ngModel)]="warehouse.wilayaName" placeholder=" write your wilaya Name">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="zipCode">{{'zipCode' | translate}}</label>
+    <input class="form-control" name="zipCode" #zipCode="ngModel" ngModel [(ngModel)]="warehouse.zipCode" placeholder=" write your zip Code">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="email">{{'email' | translate}}</label>
+    <input type="email" class="form-control" name="email" #email="ngModel" ngModel [(ngModel)]="warehouse.email" placeholder=" write your email">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="phoneNumber">{{'phone' | translate}}</label>
+    <input class="form-control" name="phoneNumber" #phoneNumber="ngModel" ngModel [(ngModel)]="warehouse.phoneNumber" placeholder=" write your phone Number">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="faxNumber">{{'faxNumber' | translate}}</label>
+    <input class="form-control" name="faxNumber" #faxNumber="ngModel" ngModel [(ngModel)]="warehouse.faxNumber" placeholder=" write your fax Number">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="latitude">{{'latitude' | translate}}</label>
+    <input type="number" class="form-control" name="latitude" #latitude="ngModel" ngModel placeholder=" write your latitude"
+      [(ngModel)]="warehouse.latitude">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label class="clickable" for="longitude">{{'longitude' | translate}}</label>
+    <input type="number" class="form-control" name="longitude" #longitude="ngModel" ngModel placeholder=" write your longitude"
+      [(ngModel)]="warehouse.longitude">
+  </div>
+
+</div>

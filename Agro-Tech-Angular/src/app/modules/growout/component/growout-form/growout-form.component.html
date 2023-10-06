@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+
+    <div *ngIf="currentStep == 0">
+        <app-growout-form-general [growout]="growout"></app-growout-form-general>
+    </div>
+
+    <div *ngIf="currentStep == 1">
+        <app-growout-form-location [growout]="growout"></app-growout-form-location>
+    </div>
+
+
+
+</form>

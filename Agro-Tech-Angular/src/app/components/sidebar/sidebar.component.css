@@ -1,0 +1,37 @@
+.sidebar-logo {
+    max-height: 120px;
+}
+
+.lang-select {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.submenu-item {
+    padding: .5rem .25rem !important;
+}
+
+.submenu_line {
+    border-bottom: 1px solid rgba(25, 25, 25, 0.16);
+}
+
+.submenu-title>a {
+    display: flex;
+    justify-content: space-between;
+}
+
+ :where(.submenu-title, .submenu-item):hover {
+    background: #e0e794;
+    color: black;
+}
+
+.show>.sub-list {
+    transition: all 0.6s ease;
+}
+ /* .nav-item#cl :hover{
+    background-color: #4ab94a;
+    color: black;
+    font-weight: 600;
+
+}  */

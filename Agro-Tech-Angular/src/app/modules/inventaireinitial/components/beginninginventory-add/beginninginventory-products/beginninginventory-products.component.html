@@ -1,0 +1,55 @@
+<div class="row" [formGroup]="addform" >
+
+
+    <div class="form-group col-md-6"  >
+        <label for="typeDeProduit">{{ 'Product type' | translate }}</label>
+        <select id="typeDeProduit" name="typeDeProduit" ngModel [(ngModel)]="beginninginventory.typeDeProduit"formControlName="typeDeProduit"class="form-control" (change)="geValues($event)">
+            <option value="Field Products">{{ 'Field products' | translate }}</option>
+            <option value="Medication">   {{ 'Medication' | translate }}</option>
+            <option value="Semen">        {{ 'Semen' | translate }}</option>
+            <option value="Vaccinations"> {{ 'Vaccinations' | translate }}</option>
+
+        </select>
+    </div>
+
+<!---
+    <div class="form-group col-md-4">
+        <label for="codeProduit">{{ 'Product code' | translate }}</label>
+        <select id="codeProduit" name="codeProduit" formControlName="codeProduit" class="form-control">
+            <option *ngFor="let codeProduit of productCodes" [value]="codeProduit">{{ codeProduit }}</option>
+        </select>
+    </div> -->
+    <div class="form-group col-md-6">
+        <label for="codeProduit">{{ 'Product code' | translate }}</label>
+        <input type="text" id="codeProduit" name="codeProduit"  ngModel [(ngModel)]="beginninginventory.codeProduit"formControlName="codeProduit" class="form-control" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-6"  >
+        <label for="nomDuProduit">{{'Product name' | translate}}</label>
+        <input id="nomDuProduit" name="nomDuProduit" ngModel [(ngModel)]="beginninginventory.nomDuProduit"formControlName="nomDuProduit"class="form-control" type="text" (change)="geValues($event)">
+    </div> 
+
+    <div class="form-group col-md-6" >
+        <label for="uniteDinventaire">{{'Inventory unit' | translate}}</label>
+        <input class="form-control" type="number" name="uniteDinventaire" ngModel [(ngModel)]="beginninginventory.uniteDinventaire"formControlName="uniteDinventaire"id="uniteDinventaire" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-6"   >
+        <label for="prixUnitaire">{{'Unit price' | translate}}</label>
+        <input class="form-control" type="number" name="prixUnitaire"ngModel [(ngModel)]="beginninginventory.prixUnitaire"formControlName="prixUnitaire"id="prixUnitaire" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-6" >
+        <label for="codeDeLot">{{'Lot code' | translate}}</label>
+        <input class="form-control" type="number" id="codeDeLot" name="codeDeLot"ngModel [(ngModel)]="beginninginventory.codeDeLot"formControlName="codeDeLot" (change)="geValues($event)">
+    </div>
+
+    <div class="form-group col-md-6"  >
+        <label for="codeDeLocalisation">{{'Location code' | translate}}</label>
+        <input class="form-control" type="number" name="codeDeLocalisation" id="codeDeLocalisation" ngModel [(ngModel)]="beginninginventory.codeDeLocalisation"formControlName="codeDeLocalisation"(change)="geValues($event)">
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,19 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{ "code" | translate }}</label>
+        <input (blur)="isBlur()" class="form-control" name="code" [(ngModel)]="camp.code" formControlName="code" placeholder="write your company code "
+            required aria-invalid="true" type="number" aria-describedby="code-error" (ngModelChange)="geValues($event)">
+
+        <div style=" color : red;" *ngIf="minIstrueCode">code must be bigger than 4</div>
+    </div>
+
+    <div class="form-group col-md-6 ">
+        <label class="required" for="name">{{ "name" | translate }}</label>
+        <input (blur)="isBlur1()" class="form-control" name="name" formControlName="name" [(ngModel)]="camp.name"  placeholder="write your company name "
+            required aria-invalid="true" aria-describedby="name-error" (ngModelChange)="geValues($event)">
+        <div style=" color : red;" *ngIf="minIstrueName">name must be bigger than 2 caracters</div>
+
+    </div>
+
+</div>

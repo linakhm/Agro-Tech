@@ -1,0 +1,25 @@
+<div class="row" [formGroup]="addform" >
+ 
+    <div class="form-group col-md-6">
+        <label class="required" for="codeDeTransaction">{{'Transaction code' | translate}}</label>
+        <input class="form-control" name="codeDeTransaction" ngModel [(ngModel)]="beginninginventory.codeDeTransaction" formControlName="codeDeTransaction" (change)="geValues($event)">
+
+    </div> 
+ 
+
+    <div class="form-group col-md-6" >
+        <label class="required" for="dateDeEvenement">{{'Event date' | translate}}</label>
+        <input class="form-control" type="date" name="dateDeEvenement" ngModel [(ngModel)]="beginninginventory.dateDeEvenement" formControlName="dateDeEvenement"   (change)="geValues($event)"  />
+    </div>
+
+    <div class="form-group col-md-6" >
+        <label class="required" for="dateExpiration">{{'Expiration date' | translate}}</label>
+        <input class="form-control" name="dateExpiration" type="date" ngModel [(ngModel)]="beginninginventory.dateExpiration" formControlName="dateExpiration" (change)="geValues($event)" />
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="time">{{ 'Time' | translate }}</label>
+        <input class="form-control" type="time" name="temps"  ngModel [(ngModel)]="beginninginventory.temps" formControlName="temps"  (change)="geValues($event)" />
+    </div>
+
+</div>

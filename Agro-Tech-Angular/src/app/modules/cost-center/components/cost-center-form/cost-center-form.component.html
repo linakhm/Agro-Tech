@@ -1,0 +1,15 @@
+<ng-content></ng-content>
+
+<form class="form-card">
+
+  <div *ngIf="currentStep == 0">
+    <app-cost-center-form-general [cost]="cost"></app-cost-center-form-general>
+  </div>  
+
+  <div *ngIf="currentStep == 1">
+   <app-cost-center-form-information  [cost]="cost"></app-cost-center-form-information>
+  </div>
+
+  
+
+</form>

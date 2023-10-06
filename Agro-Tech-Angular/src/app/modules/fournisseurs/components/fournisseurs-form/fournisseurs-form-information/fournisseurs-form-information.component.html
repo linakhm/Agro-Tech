@@ -1,0 +1,64 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{'address' | translate}}</label>
+        <input class="form-control" name="address" ngModel [(ngModel)]="fournisseur.address"
+               formControlName="address" required aria-invalid="true" (change)="geValues($event)" />
+        <div *ngIf="addform.get('address')?.errors?.required">
+            Address is required.
+        </div>
+    </div>
+
+
+    <div class="form-group col-md-6">
+        <label class="required" for="codeCity">{{'codeCity' | translate}}</label>
+        <input class="form-control" name="codeCity" ngModel [(ngModel)]="fournisseur.codeCity"
+               formControlName="codeCity" required aria-invalid="true" (change)="geValues($event)" />
+        <div *ngIf="addform.get('codeCity')?.errors?.required">
+            Code city is required.
+        </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label class="required" for="nameCity">{{'nameCity' | translate}}</label>
+            <input class="form-control" name="nameCity" ngModel [(ngModel)]="fournisseur.nameCity"
+                   formControlName="nameCity" required aria-invalid="true" (change)="geValues($event)" />
+            <div *ngIf="addform.get('nameCity')?.errors?.required">
+                Name city is required.
+            </div>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label class="required" for="wilayaName">{{'wilayaName' | translate}}</label>
+                <input class="form-control" name="wilayaName" ngModel [(ngModel)]="fournisseur.wilayaName"
+                       formControlName="wilayaName" required aria-invalid="true" (change)="geValues($event)" />
+                <div *ngIf="addform.get('wilayaName')?.errors?.required">
+                    Wilaya name is required.
+                </div>
+                </div>
+
+            <div class="form-group col-md-6">
+                <label class="required" for="phone">{{'phone' | translate}}</label>
+                <input class="form-control" name="phone" ngModel [(ngModel)]="fournisseur.phone"
+                       formControlName="phone" required aria-invalid="true" (change)="geValues($event)" />
+                <div *ngIf="addform.get('phone')?.errors?.required">
+                    Phone is required.
+                </div>
+                <div *ngIf="addform.get('phone')?.errors?.pattern">
+                    Enter valid digits.
+                </div>
+            </div>
+
+                <div class="form-group col-md-6">
+                    <label class="required" for="phone">{{'email' | translate}}</label>
+                    <input class="form-control" name="email" ngModel [(ngModel)]="fournisseur.email"
+                           formControlName="email" required aria-invalid="true" (change)="geValues($event)" />
+                    <div *ngIf="addform.get('email')?.errors?.required">
+                        Email is required.
+                    </div>
+                    <div *ngIf="addform.get('email')?.errors?.email">
+                        Email is not valid.
+                    </div>
+
+                    </div>
+                </div>

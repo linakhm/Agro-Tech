@@ -1,0 +1,66 @@
+<div class="row" [formGroup]="addform">
+
+    <div class="form-group col-md-6">
+        <label class="required" for="code">{{'code' | translate}}</label>
+        <input (blur)="isBlurDCisvalid()" class="form-control" name="code" [(ngModel)]="division.code"
+            formControlName="code" required placeholder=" write your Division Code" aria-invalid="true" type="number"
+            aria-describedby="code-error" (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DCisvalid">code must be begger than 4</div>
+
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="name">{{'name' | translate}}</label>
+        <input (blur)="isBlurDNisvalid()" class="form-control" name="name" formControlName="name" placeholder=" write your Division name"
+            [(ngModel)]="division.name" required aria-invalid="true" aria-describedby="name-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="DNisvalid">name must be longer than 2 characters</div>
+
+    </div>
+
+    <div class="form-group col-md-6">
+        <label class="required" for="speciesType">{{ "Species Type  " | translate }}   </label>
+        <select  class="form-control"
+        (click)="setSpeciesTypeValue();geValues($event)"
+         name="speciesType"
+         formControlName="speciesType"
+          required
+          
+          >
+          <option value="" disabled selected>Select your option</option>
+          <option  value="Chicken">
+            Chicken
+          </option>
+          <option  value="Layer">
+            Layer
+          </option>
+          <option  value="Turkey">
+            Turkey
+          </option>
+          <option  value="Duck">
+            Duck
+          </option>
+          
+        </select>
+        <!-- <label class="required" for="speciesType">{{'Species Type' | translate}}</label>
+        <input (blur)="isBlurSTisvali()" class="form-control" name="speciesType" formControlName="speciesType"  placeholder=" write your species Type"
+            [(ngModel)]="division.speciesType" required aria-invalid="true" aria-describedby="speciesType-error"
+            (ngModelChange)="geValues($event)">
+        <div style="color: red;" *ngIf="STisvali">Species Type must be between 3 and 20 characters</div> -->
+
+
+    </div>
+
+
+    <div class="form-group col-md-6">
+        <label for="measurement">{{'Measurement' | translate}}  <span style="color: red;" *ngIf="MeasurementToValidate" >you must fill Measurement</span>  </label>
+        <input (blur)="isBlurMisvalid();setSpeciesTypeValue();geValues($event)" class="form-control" name="measurement" formControlName="measurement" placeholder=" write your measurement"
+            [(ngModel)]="division.measurement" required aria-invalid="true" aria-describedby="measurement-error"
+            >
+        <div style="color: red;" *ngIf="Misvalid">Measurement must be between 3 and 10 characters</div>
+
+    </div>
+
+
+
+</div>

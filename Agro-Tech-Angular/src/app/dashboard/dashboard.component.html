@@ -1,0 +1,208 @@
+<div class="main-content">
+    <h2>{{title}}</h2>
+    <div #container></div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <h5>Filter By</h5>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <kendo-dropdownlist [iconClass]="'k-icon k-i-calendar'" class="k-dropdown"
+                    (valueChange)="onYearSelected()" [data]="yearsList" [(ngModel)]="minDate">
+                </kendo-dropdownlist>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-3">
+            <div class="form-group">
+                <kendo-dropdownlist [iconClass]="'k-icon k-i-calendar'" (valueChange)="onYearSelected()"
+                    [data]="yearsList" [(ngModel)]="maxDate" class="year-dropdown">
+                </kendo-dropdownlist>
+            </div>
+
+
+        </div>
+        <div class="col-md-3 justify-content-right">
+            <button mat-raised-button class="btn btn-sm mat-raised-button mat-button-base" (click)="exportCharts()">
+                <span>Export as PDF <i class="material-icons">picture_as_pdf</i></span>
+                <div matripple="" class="mat-ripple mat-button-ripple"></div>
+            </button>
+        </div>
+
+
+    </div>
+
+    <app-card [averageArea]="averageArea" [averageProduction]="averageProduction" [averageQuantity]="averageQuantity"
+        [averageExportationPrice]="averageExportationPrice"></app-card>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="card">
+
+                <kendo-chart #firstChart>
+                    <kendo-chart-title text="{{env.titleChartPrixOilOliveVrac}}">
+                    </kendo-chart-title>
+                    <kendo-chart-category-axis>
+                        <kendo-chart-category-axis-item [categories]="years" [title]="{ text: 'Années' }">
+                        </kendo-chart-category-axis-item>
+                    </kendo-chart-category-axis>
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="line" [data]="vracPrices">
+                        </kendo-chart-series-item>
+
+                    </kendo-chart-series>
+                </kendo-chart>
+                <a (click)="exportChart(1)" class="download">Export PDF</a>
+
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+
+            <div class="card">
+                <kendo-chart #secondChart>
+                    <kendo-chart-title text="{{env.titleChartPrixOilOlive}}"></kendo-chart-title>
+                    <kendo-chart-category-axis>
+                        <kendo-chart-category-axis-item [categories]="years" [title]="{ text: 'Années' }">
+                        </kendo-chart-category-axis-item>
+                    </kendo-chart-category-axis>
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="line" [data]="currentPrices">
+                        </kendo-chart-series-item>
+
+                    </kendo-chart-series>
+                </kendo-chart>
+                <a (click)="exportChart(2)" class="download">Export PDF</a>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" *ngIf="exportationsInTons?.length > 0">
+            <div class="card">
+                <kendo-chart #thirdChart>
+                    <kendo-chart-title text="{{env.titleChartOilOliveKg}}"></kendo-chart-title>
+
+                    <kendo-chart-series>
+
+                        <kendo-chart-series-item type="column" [data]="exportationsInTons">
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                </kendo-chart>
+                <a (click)="exportChart(3)" class="download">Export PDF</a>
+            </div>
+        </div>
+
+
+        <div class="col-md-6" *ngIf="exportationsInCurrency?.length > 0">
+            <div class="card">
+                <kendo-chart #fourthChart>
+                    <kendo-chart-title text="{{env.titleChartOilOliveDt}}"></kendo-chart-title>
+
+                    <kendo-chart-series>
+
+                        <kendo-chart-series-item type="column" [data]="exportationsInCurrency">
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                </kendo-chart>
+                <a (click)="exportChart(4)" class="download">Export PDF</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" *ngIf="data?.length > 0">
+
+            <div class="card">
+                <kendo-chart #fifthChart>
+                    <kendo-chart-title text="{{env.titleChartRepartition}}"></kendo-chart-title>
+
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="donut" [data]="data" categoryField="kind" field="share">
+
+                        </kendo-chart-series-item>
+                    </kendo-chart-series>
+                    <kendo-chart-legend [visible]="true"></kendo-chart-legend>
+                </kendo-chart>
+                <a (click)="exportChart(5)" class="download">Export PDF</a>
+
+            </div>
+        </div>
+
+        <div class="col-md-6" *ngIf="productionAverages?.length > 0">
+
+            <div class="card">
+
+                <kendo-chart #sixthChart>
+                    <kendo-chart-title text="{{env.titleChartClassement}}"></kendo-chart-title>
+                    <kendo-chart-category-axis>
+                        <kendo-chart-category-axis-item [categories]="categories">
+                        </kendo-chart-category-axis-item>
+                    </kendo-chart-category-axis>
+                    <kendo-chart-series>
+                        <kendo-chart-series-item type="bar" [gap]="2" [spacing]="0.25" [data]="productionAverages">
+                        </kendo-chart-series-item>
+
+                    </kendo-chart-series>
+                </kendo-chart>
+                <a (click)="exportChart(6)" class="download">Export PDF</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+
+        <div class="card">
+
+            <kendo-chart #seventhChart>
+                <kendo-chart-title text="Tempéraure moyenne (°C)"></kendo-chart-title>
+                <kendo-chart-category-axis>
+                    <kendo-chart-category-axis-item [categories]="yearsPart" [title]="{ text: 'Years' }">
+                    </kendo-chart-category-axis-item>
+                </kendo-chart-category-axis>
+                <kendo-chart-series>
+
+                    <kendo-chart-series-item type="line" [data]="temperatures">
+                    </kendo-chart-series-item>
+                    <kendo-chart-series-item type="line" [data]="performances">
+                    </kendo-chart-series-item>
+                </kendo-chart-series>
+            </kendo-chart>
+            <a (click)="exportChart(7)" class="download">Export PDF</a>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+        <div class="card">
+
+            <kendo-chart #eightChart>
+                <kendo-chart-title text="Pluviométrie moyenne (mm)"></kendo-chart-title>
+                <kendo-chart-category-axis>
+                    <kendo-chart-category-axis-item [categories]="yearsPart" [title]="{ text: 'Years' }">
+                    </kendo-chart-category-axis-item>
+                </kendo-chart-category-axis>
+                <kendo-chart-series>
+                    <kendo-chart-series-item type="line" [data]="rainfalls">
+                    </kendo-chart-series-item>
+                    <kendo-chart-series-item type="line" [data]="performances">
+                    </kendo-chart-series-item>
+
+                </kendo-chart-series>
+            </kendo-chart>
+            <a (click)="exportChart(8)" class="download">Export PDF</a>
+        </div>
+    </div>
+</div>
