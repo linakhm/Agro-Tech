@@ -93,7 +93,7 @@ stage('Docker Build frontend image') {
                    }
                     
             }
-}
+
 
         stage('Deploy application with Docker Compose') {
             steps {
@@ -109,10 +109,10 @@ stage('Docker Build frontend image') {
                 }
             }
         }
-    
- }  
-
-    post {
+        
+   }     
+        
+         post {
         success {
 
             echo 'Pipeline completed successfully!'
@@ -122,6 +122,9 @@ stage('Docker Build frontend image') {
             echo 'Pipeline failed!'
         }
     }
+    
+ 
+  } 
    
    
    
