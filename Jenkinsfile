@@ -57,9 +57,8 @@ pipeline {
            
    sh "docker build -t agrotech-backend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Dockerfile ."
 
-  #sh 'docker build -t agrotech-frontend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Agro-Tech-Angular/Dockerfile .'
  
-  sh 'docker build -t agrotech-frontend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Agro-Tech-Angular/Dockerfile /var/lib/jenkins/workspace/Agro-Tech-DevOps/Agro-Tech-Angular   '    
+  sh 'docker build -t agrotech-frontend-image:latest -f /var/lib/jenkins/workspace/Agro-Tech-DevOps/Agro-Tech-Angular/Dockerfile /var/lib/jenkins/workspace/Agro-Tech-DevOps/Agro-Tech-Angular'    
 
 }
     
