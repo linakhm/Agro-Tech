@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     stages {
-       
+        stage('Gt Checkout') {
+            steps {
+
+git branch : 'main' ,credentialsId:'git-pat',url 'https://github.com/linakhm/Agro-Tech'
+            }
+        }
+        
        stage('Maven Build') {
             steps {
 
@@ -10,7 +16,7 @@ pipeline {
             }
         }
         
-       stage('Run Junit Test & Reporting') {
+       stage('Maven Test') {
             steps {
             
                 sh 'mvn test -DskipTests'
@@ -19,16 +25,6 @@ pipeline {
          
           }      
           
-      /*   stage('Archive the test reports') {
-         
-            steps {
-            
-                archiveArtifacts artifacts: 'target/*,jar', followSymlinks: false
-                
-            }
-            
-        }*/
-        
          stage('SonarQube Analysis') {
          
             steps {
@@ -107,6 +103,21 @@ stage('Docker Build frontend image') {
                 }
             }
         }
+        stage ('send mail of success'){
+        
+        steps{
+        
+
+                     emailext  body: 'Hi Lina , your pipeline is built with sucess !!', recipientProviders: [buildUser()], subject: 'Build success', to: 'lina.khammeri@esprit.tn'
+            echo "Success: Build success"
+       
+        
+        
+        }
+        
+        
+        }
+        
         
    }     
         
@@ -130,4 +141,4 @@ stage('Docker Build frontend image') {
   
    
   
-
+post
