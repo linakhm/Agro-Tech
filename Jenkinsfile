@@ -19,7 +19,7 @@ pipeline {
          
           }      
           
-         stage('Archive the test reports') {
+      /*   stage('Archive the test reports') {
          
             steps {
             
@@ -27,7 +27,7 @@ pipeline {
                 
             }
             
-        }
+        }*/
         
          stage('SonarQube Analysis') {
          
