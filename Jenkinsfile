@@ -2,13 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Gt Checkout') {
-            steps {
 
-git branch : 'main' ,credentialsId:'git-pat',url 'https://github.com/linakhm/Agro-Tech'
-            }
-        }
-        
        stage('Maven Build') {
             steps {
 
