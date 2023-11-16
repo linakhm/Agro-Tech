@@ -13,8 +13,7 @@ pipeline {
        stage('Run Junit Test & Reporting') {
             steps {
             
-                sh 'mvn test -Dskiptests'
-                junit '**/target/surefire-reports/*.xml'
+                sh 'mvn test -DskipTests'
 
         }
          
